@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+sh scripts/build
+JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/java-21-amazon-corretto}"
+exec "$JAVA_HOME/bin/java" -cp build/main org.example.Application

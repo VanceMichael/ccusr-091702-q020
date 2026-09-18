@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/java-21-amazon-corretto}"
+rm -rf build
+mkdir -p build/main build/test
+"$JAVA_HOME/bin/javac" -d build/main src/main/java/org/example/*.java
+"$JAVA_HOME/bin/javac" -cp build/main -d build/test src/test/java/org/example/*.java

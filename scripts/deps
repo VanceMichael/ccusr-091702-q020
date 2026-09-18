@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+mkdir -p lib
+base=https://repo.maven.apache.org/maven2
+fetch() { test -s "lib/$2" || curl -fsSL --retry 5 --retry-delay 2 --retry-all-errors --connect-timeout 15 "$base/$1/$2" -o "lib/$2"; }
+fetch org/xerial/sqlite-jdbc/3.50.3.0 sqlite-jdbc-3.50.3.0.jar
+fetch org/slf4j/slf4j-api/2.0.17 slf4j-api-2.0.17.jar
+fetch org/slf4j/slf4j-nop/2.0.17 slf4j-nop-2.0.17.jar
